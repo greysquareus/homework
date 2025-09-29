@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Форма — Home Work 2</title>
+  <style>
+    body{font-family:Arial, sans-serif; max-width:900px;margin:0 auto;padding:1rem;}
+    label{display:block;margin-top:.6rem}
+    .row{display:flex;gap:1rem;flex-wrap:wrap}
+    .col{flex:1;min-width:220px}
+    nav a{margin-right:.8rem;color:#0366d6;text-decoration:none;}
+    fieldset{margin-top:1rem;padding:1rem;border-radius:6px}
+    button{margin-top:.8rem;padding:.5rem 1rem}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Складна форма</h1>
+    <nav aria-label="Основне меню">
+      <a href="/index.html">Головна</a>
+      <a href="/pages/about.html">Про нас</a>
+      <a href="/pages/articles.html">Статті</a>
+      <a href="/pages/gallery.html">Галерея</a>
+      <a href="/pages/form.html">Форма</a>
+      <a href="/pages/anchors.html">Якорі</a>
+      <a href="/pages/contacts.html">Контакти</a>
+    </nav>
+  </header>
+
+  <main>
+    <form action="#" method="post" enctype="multipart/form-data" novalidate>
+      <fieldset>
+        <legend>Персональні дані</legend>
+        <div class="row">
+          <div class="col">
+            <label for="fname">Ім'я</label>
+            <input id="fname" name="first_name" type="text" required>
+          </div>
+          <div class="col">
+            <label for="lname">Прізвище</label>
+            <input id="lname" name="last_name" type="text" required>
+          </div>
+        </div>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="ivan@example.com" required>
+
+        <label for="phone">Телефон</label>
+        <input id="phone" name="phone" type="tel" pattern="\+?\d{7,15}" placeholder="+380..." aria-describedby="phoneHelp">
+        <small id="phoneHelp">Формат: лише цифри, за бажанням +код країни.</small>
+      </fieldset>
+
+      <fieldset>
+        <legend>Параметри</legend>
+
+        <label for="birth">Дата народження</label>
+        <input id="birth" name="birthdate" type="date">
+
+        <label for="favcolor">Улюблений колір</label>
+        <input id="favcolor" name="favcolor" type="color" value="#0066cc">
+
+        <label for="rating">Рейтинг (meter)</label>
+        <meter id="rating" min="0" max="10" low="3" high="8" optimum="9" value="7">7/10</meter>
+
+        <label for="progress">Прогрес підготовки</label>
+        <progress id="progress" value="40" max="100">40%</progress>
+
+        <label for="range">Налаштування (range)</label>
+        <input id="range" name="range" type="range" min="0" max="100" value="30">
+      </fieldset>
+
+      <fieldset>
+        <legend>Вибір опцій</legend>
+
+        <label>Підписка</label>
+        <label><input type="checkbox" name="subscribe" value="newsletter"> Підписатися на розсилку</label>
+        <label><input type="checkbox" name="agree" required> Погоджуюсь з умовами</label>
+
+        <label>Стать</label>
+        <label><input type="radio" name="gender" value="male"> Чоловіча</label>
+        <label><input type="radio" name="gender" value="female"> Жіноча</label>
+        <label><input type="radio" name="gender" value="other"> Інша</label>
+
+        <label for="country">Країна</label>
+        <select id="country" name="country">
+          <optgroup label="Європа">
+            <option value="ua">Україна</option>
+            <option value="pl">Польща</option>
+          </optgroup>
+          <optgroup label="Інше">
+            <option value="us">США</option>
+            <option value="other">Інше</option>
+          </optgroup>
+        </select>
+
+        <label for="choices">Виберіть інтереси (Ctrl/Cmd+клік для множинного вибору)</label>
+        <select id="choices" name="interests" multiple size="4">
+          <option value="web">Веб-розробка</option>
+          <option value="design">Дизайн</option>
+          <option value="testing">Тестування</option>
+          <option value="devops">DevOps</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Додатково</legend>
+
+        <label for="about">Про себе</label>
+        <textarea id="about" name="about" rows="5" placeholder="Коротко про себе..."></textarea>
+
+        <label for="resume">Завантажити резюме (PDF)</label>
+        <input id="resume" name="resume" type="file" accept=".pdf,application/pdf">
+
+        <input type="hidden" name="form_id" value="hw2-form-001">
+
+        <label for="website">Вебсайт</label>
+        <input id="website" name="website" type="url" placeholder="https://example.com">
+
+        <label for="quantity">Кількість</label>
+        <input id="quantity" name="quantity" type="number" min="1" max="100" value="1">
+
+        <label for="suggest">Підказки (datalist)</label>
+        <input id="suggest" name="suggest" list="suggestions">
+        <datalist id="suggestions">
+          <option value="HTML">
+          <option value="CSS">
+          <option value="JavaScript">
+        </datalist>
+      </fieldset>
+
+      <fieldset>
+        <legend>Результат</legend>
+        <label for="calc">Калькулятор (сума двох чисел)</label>
+        <div class="row">
+          <input id="num1" type="number" value="0" aria-label="Число 1">
+          <input id="num2" type="number" value="0" aria-label="Число 2">
+          <button type="button" id="calcBtn">Обчислити</button>
+        </div>
+        <p>Сума: <output id="sumOutput">0</output></p>
+      </fieldset>
+
+      <button type="submit">Надіслати</button>
+      <button type="reset">Очистити</button>
+    </form>
+
+    <script>
+      (function(){
+        var btn = document.getElementById('calcBtn');
+        var n1 = document.getElementById('num1');
+        var n2 = document.getElementById('num2');
+        var out = document.getElementById('sumOutput');
+        btn.addEventListener('click', function(){
+          var s = (Number(n1.value) || 0) + (Number(n2.value) || 0);
+          out.value = s;
+        });
+      })();
+    </script>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 — Форма.</p>
+  </footer>
+</body>
